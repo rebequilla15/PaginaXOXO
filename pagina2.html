@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XOXO.ᐟ | PARA TI</title>
+        <link rel="icon" type="image/png" href="image/logopagina.png">
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8cce1;
+    color: #78204c;
+    overflow-x: hidden;
+}
+/* CABECERA */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ff4a98;
+    padding: 12px;
+    border-top: 8px solid #e90065;
+    border-bottom: 5px solid #d90065;
+    gap: 20px;
+}
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.titulo h1 {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    text-shadow: 2px 2px #c90060;
+}
+.logo-cabecera {
+    width: 125px;
+    height: 75px;
+    object-fit: contain;
+}
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    width: 100%;
+}
+/* MENU */
+.barra-navegacion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+.boton-nav {
+    text-decoration: none;
+    color: white;
+    background-color: #e90065;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #ffb5d5;
+    border-radius: 5px;
+}
+.boton-nav:hover, .boton-nav.activo {
+    background-color: white;
+    color: #e90065;
+}
+/* PRESENTACION */
+main {
+    padding: 18px;
+}
+.intro {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+.intro-texto {
+    flex: 1;
+    background-color: #ff1682;
+    border: 4px solid #e90065;
+    border-radius: 15px 55px 15px 55px;
+    padding: 20px 24px;
+}
+.intro h2 {
+    color: white;
+    font-size: 32px;
+    margin: 0 0 8px;
+    text-shadow: 3px 3px #c90060;
+}
+.intro p {
+    color: white;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+.intro-imagen {
+    width: 28%;
+    height: 175px;
+    object-fit: cover;
+    border: 5px solid #e90065;
+    border-radius: 50% 15px 50% 15px;
+    background-color: #ffa6d2;
+}
+/* MINI ETIQUETAS */
+.tira strong {
+    color: white;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+.tira span {
+    background-color: #ffa6d2;
+    color: #78204c;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+/* SECCION DE ARTISTAS EN TIRA */
+.recomendados {
+    margin-bottom: 25px;
+}
+.titulo-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.titulo-seccion h2 {
+    color: #e90065;
+    font-size: 23px;
+    margin: 0;
+}
+.titulo-seccion span {
+    color: #e90065;
+    font-size: 25px;
+}
+.fila-artistas {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+}
+.artista-mini {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffe6f1;
+    border: 3px solid #ffb1d3;
+    border-radius: 12px;
+    padding: 9px;
+}
+.artista-mini img {
+    width: 86px;
+    height: 92px;
+    object-fit: cover;
+    border: 3px solid #e90065;
+    border-radius: 9px;
+    flex-shrink: 0;
+    background-color: #ffa6d2;
+}
+.artista-mini h3 {
+    color: #e90065;
+    font-size: 14px;
+    margin: 0 0 5px;
+}
+.artista-mini p {
+    font-size: 11px;
+    margin: 4px 0;
+}
+.artista-mini a {
+    display: inline-block;
+    color: white;
+    background-color: #e90065;
+    padding: 6px 8px;
+    font-size: 10px;
+    text-decoration: none;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+.artista-mini a:hover {
+    background-color: #ff4a98;
+}
+/* SECCION MOOD */
+.mood {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 18px;
+    align-items: stretch;
+    margin-bottom: 22px;
+}
+.mood-imagen {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border: 5px solid #e90065;
+    border-radius: 45px 10px 45px 10px;
+    background-color: #ffa6d2;
+}
+.mood-caja {
+    background-color: #e90082;
+    padding: 18px;
+    border-radius: 35px 10px 35px 10px;
+    border: 3px solid #d90065;
+}
+.mood-caja h2 {
+    color: white;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+.mood-caja p {
+    color: white;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.mood-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+.mood-opciones a {
+    background-color: #ffa6d2;
+    color: #78204c;
+    padding: 8px 11px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #ffb5d5;
+    border-radius: 5px;
+}
+.mood-opciones a:hover {
+    background-color: white;
+}
+/* CANCION DE LA SEMANA */
+.cancion-semana {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background-color: #ff4a98;
+    border: 4px solid #e90065;
+    border-radius: 45px 12px 45px 12px;
+    padding: 15px;
+    margin-bottom: 22px;
+}
+.cancion-semana img {
+    width: 145px;
+    height: 145px;
+    object-fit: cover;
+    border: 4px solid #ffb5d5;
+    border-radius: 12px;
+    background-color: #ffa6d2;
+}
+.cancion-semana div {
+    flex: 1;
+    min-width: 0;
+    color: white;
+}
+.cancion-semana h2 {
+    font-size: 22px;
+    margin: 0 0 6px;
+}
+.cancion-semana p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 5px 0;
+}
+.cancion-semana audio {
+    width: 100%;
+    max-width: 350px;
+    margin-top: 8px;
+}
+/* FAVORITOS EN HORIZONTAL */
+.favoritos {
+    background-color: #ffe6f1;
+    border-top: 5px solid #e90065;
+    border-bottom: 5px solid #e90065;
+    padding: 16px;
+    margin-bottom: 10px;
+}
+.favoritos h2 {
+    color: #e90065;
+    font-size: 21px;
+    margin: 0 0 12px;
+}
+.favoritos-lista {
+    display: flex;
+    gap: 12px;
+}
+.favorito {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px;
+    background-color: #ffa6d2;
+    color: #78204c;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+.favorito:hover {
+    background-color: #ffb5d5;
+}
+.favorito span {
+    color: #e90065;
+    font-size: 24px;
+}
+/* PIE */
+footer {
+    text-align: center;
+    background-color: #e90065;
+    color: white;
+    padding: 12px;
+    margin-top: 5px;
+    border-top: 6px solid #ff74b1;
+}
+footer p {
+    margin: 5px;
+    font-size: 13px;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+/* PANTALLAS PEQUEÑAS */
+@media (max-width: 850px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .titulo h1 {
+        font-size: 24px;
+    }
+    .intro {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .intro-imagen {
+        width: 100%;
+        height: 190px;
+    }
+    .fila-artistas {
+        flex-direction: column;
+    }
+    .mood {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 550px) {
+    .intro h2 {
+        font-size: 25px;
+    }
+    .artista-mini img {
+        width: 95px;
+        height: 95px;
+    }
+    .cancion-semana {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .cancion-semana img {
+        width: 100%;
+        height: 210px;
+    }
+    .favoritos-lista {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <div>
+        <div class="titulo">
+            <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+            <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+        </div>
+        <nav class="barra-navegacion">
+            <a href="index.html" class="boton-nav">HOME!!</a>
+            <a href="pagina1.html" class="boton-nav">LETRAS</a>
+            <a href="pagina2.html" class="boton-nav activo">PARA TI.ᐟ</a>
+            <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+            <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+            <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+        </nav>
+    </div>
+</header>
+<main>
+    <section class="intro">
+        <div class="intro-texto">
+            <h2>ESTO ES MUY TÚ ♡</h2>
+            <p>No todo tiene que sonar igual. Encuentra artistas y canciones para tu mood: bailar, cantar a todo pulmón, recordar o desconectarte un rato.</p>
+        </div>
+        <img src="imag/Dj power.jpg" alt="Imagen musical para decorar" class="intro-imagen">
+    </section>
+    <section class="recomendados">
+        <div class="titulo-seccion">
+            <h2>✧ ARTISTAS QUE PODRÍAN SER TU VIBE</h2>
+            <span>♡ ✦ ♫</span>
+        </div>
+        <div class="fila-artistas">
+            <article class="artista-mini">
+                <img src="imag/stray-kids.jpg" alt="Stray Kids">
+                <div>
+                    <h3>STRAY KIDS</h3>
+                    <p>K-pop · energía</p>
+                    <a href="pagina4.html">VER ARTISTA ↗</a>
+                </div>
+            </article>
+            <article class="artista-mini">
+                <img src="imag/taylor-swift.jpg" alt="Taylor Swift">
+                <div>
+                    <h3>TAYLOR SWIFT</h3>
+                    <p>Pop · sentimientos</p>
+                    <a href="pagina4.html">VER ARTISTA ↗</a>
+                </div>
+            </article>
+            <article class="artista-mini">
+                <img src="imag/david-guetta.jpg" alt="David Guetta">
+                <div>
+                    <h3>DAVID GUETTA</h3>
+                    <p>Electrónica · fiesta</p>
+                    <a href="pagina4.html">VER ARTISTA ↗</a>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="mood">
+        <img src="imag/lmfao.png" alt="Imagen de música y fiesta" class="mood-imagen">
+        <div class="mood-caja">
+            <h2>¿QUÉ QUIERES SENTIR HOY? ♫</h2>
+            <p>Elige el mood y date una vuelta por las canciones que combinan con tu momento. No tienes que escuchar un solo género.</p>
+            <div class="mood-opciones">
+                <a href="pagina3.html#pop">FELIZ ♡</a>
+                <a href="pagina3.html#electronica">CON ENERGÍA ⚡</a>
+                <a href="pagina3.html#kpop">K-POP MODE ✦</a>
+                <a href="pagina3.html#chill">TRANQUI ☁</a>
+            </div>
+        </div>
+    </section>
+    <section class="cancion-semana">
+        <img src="imag/katy-perry.jpg" alt="Portada de Katy Perry">
+        <div>
+            <h2>♡ EN REPEAT: TEENAGE DREAM</h2>
+            <p>Katy Perry · Pop</p>
+            <p>Para esos momentos en los que quieres sentir que estás en una película de los 2000.</p>
+            <audio controls>
+                <source src="audio/cancion.mp3" type="audio/mpeg">
+                Tu navegador no puede reproducir este audio.
+            </audio>
+        </div>
+    </section>
+    <section class="favoritos">
+        <h2>✦ TU RINCÓN MUSICAL</h2>
+        <div class="favoritos-lista">
+            <a href="pagina5.html" class="favorito"><span>♥</span> CANCIONES GUARDADAS</a>
+            <a href="pagina5.html" class="favorito"><span>☰</span> TUS PLAYLISTS</a>
+            <a href="pagina3.html" class="favorito"><span>◷</span> ESCUCHADO RECIENTEMENTE</a>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>♡ XOXO 💋 | Música para cada mood ♡</p>
+    <p><a href="index.html">Volver al inicio</a></p>
+</footer>
+</body>
+</html>

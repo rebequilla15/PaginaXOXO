@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO.ᐟ | PLAYLISTS</title>
+            <link rel="icon" type="image/png" href="image/logopagina.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8cce1;
+            color: #78204c;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #ff4a98;
+            padding: 12px;
+            border-top: 8px solid #e90065;
+            border-bottom: 5px solid #d90065;
+            gap: 20px;
+        }
+
+        header>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .titulo h1 {
+            color: white;
+            font-size: 30px;
+            margin: 0;
+            text-shadow: 2px 2px #c90060;
+        }
+
+        .logo-cabecera {
+            width: 125px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .barra-navegacion {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .boton-nav {
+            text-decoration: none;
+            color: white;
+            background-color: #e90065;
+            padding: 8px 12px;
+            font-size: 13px;
+            border: 1px solid #ffb5d5;
+            border-radius: 5px;
+        }
+
+        .boton-nav:hover,
+        .boton-nav.activo {
+            background-color: white;
+            color: #e90065;
+        }
+
+        .intro-playlist {
+            margin: 18px 15px 20px;
+            padding: 22px;
+            background-color: #ff4a98;
+            border: 3px solid #e90065;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 190px;
+            gap: 20px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-playlist h2 {
+            color: white;
+            font-size: clamp(38px, 7vw, 76px);
+            line-height: .88;
+            margin: 12px 0;
+            text-shadow: 4px 4px #c90060;
+        }
+
+        .intro-playlist p {
+            max-width: 580px;
+            color: white;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .sticker {
+            display: inline-block;
+            background: #ffe6f1;
+            color: #e90065;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 7px 10px;
+            transform: rotate(-3deg);
+            letter-spacing: 1px;
+        }
+
+        .mixtape {
+            width: 175px;
+            height: 135px;
+            background: #ffe6f1;
+            border: 4px solid #e90065;
+            box-shadow: 7px 7px #c90060;
+            transform: rotate(7deg);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mixtape-top {
+            display: flex;
+            justify-content: space-between;
+            color: #e90065;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .mixtape-lines {
+            height: 48px;
+            border-top: 3px dashed #ff4a98;
+            border-bottom: 3px dashed #ff4a98;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e90065;
+            font-size: 24px;
+            letter-spacing: 4px;
+        }
+
+        .mixtape-bottom {
+            color: #e90065;
+            font-size: 9px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .contenido-playlist {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.4fr);
+            gap: 16px;
+            margin: 0 15px 20px;
+            align-items: start;
+        }
+
+        .selector-playlist {
+            background: #ffe6f1;
+            border: 3px solid #e90065;
+            padding: 14px;
+            transform: rotate(-.5deg);
+        }
+
+        .titulo-caja {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border-bottom: 2px dashed #ff4a98;
+            padding-bottom: 9px;
+            margin-bottom: 12px;
+        }
+
+        .titulo-caja h3 {
+            margin: 0;
+            color: #e90065;
+            font-size: 20px;
+        }
+
+        .titulo-caja span {
+            font-size: 10px;
+            color: white;
+            background: #e90065;
+            padding: 5px 7px;
+        }
+
+        .opcion-playlist {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 58px minmax(0, 1fr) auto;
+            gap: 10px;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 2px solid #ffafd1;
+            background: #fff0f7;
+            color: #78204c;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+        }
+
+        .opcion-playlist:hover,
+        .opcion-playlist.seleccionada {
+            background: #ffb5d5;
+            border-color: #e90065;
+        }
+
+        .opcion-playlist img {
+            width: 58px;
+            height: 58px;
+            object-fit: cover;
+            border: 2px solid #e90065;
+            background: #ffc6df;
+        }
+
+        .opcion-playlist strong {
+            display: block;
+            color: #e90065;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .opcion-playlist small {
+            display: block;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .play-mini {
+            color: #e90065;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .detalle-playlist {
+            background: #ff1682;
+            border: 3px solid #e90065;
+            padding: 14px;
+            color: white;
+            position: relative;
+        }
+
+        .detalle-cabecera {
+            display: grid;
+            grid-template-columns: 175px minmax(0, 1fr);
+            gap: 15px;
+            align-items: center;
+        }
+
+        .detalle-cabecera img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border: 5px solid #ffafd1;
+            box-shadow: 6px 6px #c90060;
+            background: #ffe6f1;
+        }
+
+        .detalle-cabecera .numero {
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            color: #ffe6f1;
+        }
+
+        .detalle-cabecera h3 {
+            color: white;
+            font-size: clamp(24px, 3vw, 37px);
+            line-height: .95;
+            margin: 9px 0;
+        }
+
+        .detalle-cabecera p {
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .etiquetas {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .etiquetas span {
+            background: #ffe6f1;
+            color: #e90065;
+            padding: 5px 7px;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .tracklist {
+            background: #fff0f7;
+            color: #78204c;
+            margin-top: 18px;
+            padding: 12px;
+            border: 2px solid #ffafd1;
+        }
+
+        .tracklist h4 {
+            color: #e90065;
+            font-size: 15px;
+            margin: 0 0 9px;
+        }
+
+        .track {
+            display: grid;
+            grid-template-columns: 25px minmax(0, 1fr) auto;
+            gap: 8px;
+            align-items: center;
+            border-bottom: 1px dashed #ffafd1;
+            padding: 8px 0;
+            font-size: 12px;
+        }
+
+        .track:last-child {
+            border-bottom: 0;
+        }
+
+        .track b {
+            color: #e90065;
+        }
+
+        .track span:last-child {
+            font-size: 10px;
+            color: #e90065;
+        }
+
+        .nota-final {
+            margin: 0 15px 20px;
+            background: #ffe6f1;
+            border-left: 8px solid #e90065;
+            padding: 14px 17px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .nota-final h3 {
+            margin: 0 0 5px;
+            color: #e90065;
+            font-size: 17px;
+        }
+
+        .nota-final p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .nota-final .decoracion {
+            color: #e90065;
+            font-size: 34px;
+            transform: rotate(10deg);
+        }
+
+        footer {
+            text-align: center;
+            background: #e90065;
+            color: white;
+            padding: 12px;
+            border-top: 6px solid #ff74b1;
+        }
+
+        footer p {
+            margin: 5px;
+            font-size: 12px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media(max-width: 800px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header>div {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .contenido-playlist {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-playlist {
+                grid-template-columns: minmax(0, 1fr) 145px;
+            }
+
+            .mixtape {
+                width: 135px;
+                height: 115px;
+            }
+
+            .detalle-cabecera {
+                grid-template-columns: 150px minmax(0, 1fr);
+            }
+        }
+
+        @media(max-width: 520px) {
+            .intro-playlist {
+                grid-template-columns: 1fr;
+            }
+
+            .mixtape {
+                justify-self: end;
+            }
+
+            .detalle-cabecera {
+                grid-template-columns: 1fr;
+            }
+
+            .detalle-cabecera img {
+                width: 65%;
+                max-width: 230px;
+            }
+
+            .nota-final {
+                align-items: flex-start;
+            }
+
+            .titulo h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div class="titulo">
+                <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+                <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+            </div>
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav">HOME!!</a>
+                <a href="pagina1.html" class="boton-nav">LETRAS</a>
+                <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+                <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+                <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+                <a href="pagina5.html" class="boton-nav activo">PLAYLIST</a>
+            </nav>
+        </div>
+    </header>
+    <section class="intro-playlist">
+        <div>
+            <span class="sticker">XOXO MIXTAPE CLUB / 006</span>
+            <h2>PRESS PLAY<br>FEEL EVERYTHING ♡</h2>
+            <p>No todos los días se sienten igual. Hay playlists para arreglarte, recordar algo, bailar sin pensar o
+                simplemente mirar por la ventana como si estuvieras en un video musical. Elige una mezcla y encuentra tu
+                mood.</p>
+        </div>
+        <div class="mixtape" aria-label="Decoración de casete">
+            <div class="mixtape-top"><span>XOXO</span><span>VOL. 06</span></div>
+            <div class="mixtape-lines">♫ ♡ ♫</div>
+            <div class="mixtape-bottom">SIDE A / PLAY IT LOUD</div>
+        </div>
+    </section>
+    <main class="contenido-playlist">
+        <section class="selector-playlist">
+            <div class="titulo-caja">
+                <h3>ESCOGE TU MOOD</h3><span>MY MIXES ♡</span>
+            </div>
+            <button class="opcion-playlist seleccionada" onclick="cambiarPlaylist(0, this)">
+                <img src="imag/teenage-dream.jpg" alt="Portada de playlist Pop en repeat">
+                <span><strong>POP ON REPEAT</strong><small>Para cantar cada palabra frente al espejo.</small></span>
+                <span class="play-mini">01 ↗</span>
+            </button>
+            <button class="opcion-playlist" onclick="cambiarPlaylist(1, this)">
+                <img src="imag/stray-kids.jpg" alt="Portada de playlist Full volume">
+                <span><strong>FULL VOLUME</strong><small>Mucho ritmo y cero ganas de estar quieta.</small></span>
+                <span class="play-mini">02 ↗</span>
+            </button>
+            <button class="opcion-playlist" onclick="cambiarPlaylist(2, this)">
+                <img src="imag/1989.jpg" alt="Portada de playlist 2 AM thoughts">
+                <span><strong>2 AM THOUGHTS</strong><small>Para cuando la noche se siente de película.</small></span>
+                <span class="play-mini">03 ↗</span>
+            </button>
+            <button class="opcion-playlist" onclick="cambiarPlaylist(3, this)">
+                <img src="imag/david-guetta.jpg" alt="Portada de playlist Dance break">
+                <span><strong>DANCE BREAK</strong><small>Una mini fiesta aunque estés en tu cuarto.</small></span>
+                <span class="play-mini">04 ↗</span>
+            </button>
+        </section>
+        <section class="detalle-playlist">
+            <div class="detalle-cabecera">
+                <img id="portadaMix" src="imag/teenage-dream.jpg" alt="Portada de la playlist seleccionada">
+                <div>
+                    <span class="numero" id="numeroMix">XOXO MIX NO. 01</span>
+                    <h3 id="tituloMix">POP ON REPEAT</h3>
+                    <p id="descripcionMix">Hits pop para subirle el volumen, cantar como si estuvieras en un escenario y
+                        convertir cualquier tarde en un videoclip.</p>
+                    <div class="etiquetas" id="etiquetasMix"><span>POP</span><span>FEEL GOOD</span><span>MAIN
+                            CHARACTER</span></div>
+                </div>
+            </div>
+            <div class="tracklist">
+                <h4>♡ TRACKLIST DE MENTIRITAS</h4>
+                <div id="cancionesMix">
+                    <div class="track"><b>01</b><span>Teenage Dream — Katy Perry</span><span>POP</span></div>
+                    <div class="track"><b>02</b><span>Style — Taylor Swift</span><span>POP</span></div>
+                    <div class="track"><b>03</b><span>Starships — Nicki Minaj</span><span>HYPE</span></div>
+                    <div class="track"><b>04</b><span>Feel This Moment — Pitbull ft. Christina
+                            Aguilera</span><span>VIBES</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="nota-final">
+        <div>
+            <h3>NO ES SOLO UNA PLAYLIST, ES UN ESTADO DE ÁNIMO ✧</h3>
+            <p>Escoge una mezcla, imagina tu propio video musical y deja que XOXO le ponga soundtrack al momento.</p>
+        </div>
+        <div class="decoracion">♫ ♡</div>
+    </section>
+    <footer>
+        <p>ﾒ૦ﾒ૦ 💋.ᐟ — XOXO MUSIC</p>
+        <p>Hecho para escuchar, recordar y repetir ♡</p>
+    </footer>
+    <script>
+        const mezclas = [
+            {titulo: "POP ON REPEAT", descripcion: "Hits pop para subirle el volumen, cantar como si estuvieras en un escenario y convertir cualquier tarde en un videoclip.", portada: "imag/teenage-dream.jpg", canciones: [["Teenage Dream — Katy Perry", "POP"], ["Style — Taylor Swift", "POP"], ["Starships — Nicki Minaj", "HYPE"], ["Feel This Moment — Pitbull ft. Christina Aguilera", "VIBES"]], etiquetas: ["POP", "FEEL GOOD", "MAIN CHARACTER"]},
+            {titulo: "FULL VOLUME", descripcion: "Para los días de energía alta: ritmos fuertes, canciones intensas y actitud de protagonista entrando a una fiesta.", portada: "imag/stray-kids.jpg", canciones: [["God's Menu — Stray Kids", "K-POP"], ["Thunderous — Stray Kids", "HYPE"], ["Bang Bang Bang — BIGBANG", "PARTY"], ["Sorry for Party Rocking — LMFAO", "DANCE"]], etiquetas: ["K-POP", "HYPE", "LOUD"]},
+            {titulo: "2 AM THOUGHTS", descripcion: "Una mezcla para mirar las luces de la ciudad, pensar demasiado poquito o demasiado y sentir que estás en una escena de película.", portada: "imag/1989.jpg", canciones: [["Style — Taylor Swift", "NIGHT"], ["Midnight City — M83", "DREAMY"], ["The Night We Met — Lord Huron", "CHILL"], ["A Thousand Years — Christina Perri", "SOFT"]], etiquetas: ["LATE NIGHT", "DREAMY", "CHILL"]},
+            {titulo: "DANCE BREAK", descripcion: "Baila por diversión, arma tu mini concierto y deja que el ritmo haga el resto. No se necesita una pista de baile.", portada: "imag/david-guetta.jpg", canciones: [["Titanium — David Guetta ft. Sia", "DANCE"], ["Where Them Girls At — David Guetta", "PARTY"], ["Party Rock Anthem — LMFAO", "CLASSIC"], ["Temperature — Sean Paul", "DANCEHALL"]], etiquetas: ["DANCE", "PARTY", "NO SITTING"]}
+        ];
+        function cambiarPlaylist(indice, boton) {
+            const mezcla = mezclas[indice];
+            document.getElementById("portadaMix").src = mezcla.portada;
+            document.getElementById("portadaMix").alt = "Portada de " + mezcla.titulo;
+            document.getElementById("numeroMix").textContent = "XOXO MIX NO. 0" + (indice + 1);
+            document.getElementById("tituloMix").textContent = mezcla.titulo;
+            document.getElementById("descripcionMix").textContent = mezcla.descripcion;
+            document.getElementById("etiquetasMix").innerHTML = mezcla.etiquetas.map(etiqueta => "<span>" + etiqueta + "</span>").join("");
+            document.getElementById("cancionesMix").innerHTML = mezcla.canciones.map((cancion, posicion) => "<div class='track'><b>" + String(posicion + 1).padStart(2, "0") + "</b><span>" + cancion[0] + "</span><span>" + cancion[1] + "</span></div>").join("");
+            document.querySelectorAll(".opcion-playlist").forEach(opcion => opcion.classList.remove("seleccionada"));
+            boton.classList.add("seleccionada");
+        }
+    </script>
+</body>
+
+</html>

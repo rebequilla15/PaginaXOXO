@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO.ᐟ | ARTISTAS</title>
+            <link rel="icon" type="image/png" href="image/logopagina.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8cce1;
+            color: #78204c;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #ff4a98;
+            padding: 12px;
+            border-top: 8px solid #e90065;
+            border-bottom: 5px solid #d90065;
+            gap: 20px;
+        }
+
+        header>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .titulo h1 {
+            color: white;
+            font-size: 30px;
+            margin: 0;
+            text-shadow: 2px 2px #c90060;
+        }
+
+        .logo-cabecera {
+            width: 125px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .barra-navegacion {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .boton-nav {
+            text-decoration: none;
+            color: white;
+            background-color: #e90065;
+            padding: 8px 12px;
+            font-size: 13px;
+            border: 1px solid #ffb5d5;
+            border-radius: 5px;
+        }
+
+        .boton-nav:hover,
+        .boton-nav.activo {
+            background-color: white;
+            color: #e90065;
+        }
+
+        .intro-artistas {
+            margin: 18px 15px;
+            min-height: 190px;
+            background-color: #e90065;
+            color: white;
+            padding: 22px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 18px;
+            border: 3px solid #ff8fc0;
+            border-radius: 5px 32px 5px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-artistas h2 {
+            font-size: clamp(32px, 5vw, 58px);
+            line-height: 0.95;
+            margin: 0 0 12px;
+            text-shadow: 4px 4px #bd0054;
+        }
+
+        .intro-artistas p {
+            max-width: 580px;
+            margin: 0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .sello {
+            background-color: #ffb5d5;
+            color: #e90065;
+            border: 3px dashed #e90065;
+            padding: 18px 14px;
+            text-align: center;
+            font-weight: bold;
+            transform: rotate(8deg);
+            min-width: 125px;
+            box-shadow: 5px 5px #c90060;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background-color: white;
+            color: #e90065;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 6px 9px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            transform: rotate(-2deg);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.85fr);
+            gap: 15px;
+            padding: 0 15px 16px;
+            align-items: start;
+        }
+
+        .artista-destacado {
+            background-color: #ff1682;
+            border: 3px solid #e90065;
+            padding: 13px;
+            color: white;
+            border-radius: 28px 5px 28px 5px;
+            position: relative;
+        }
+
+        .artista-destacado .encabezado-mini {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 2px 0 10px;
+        }
+
+        .foto-destacada {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            border: 5px solid #ffafd1;
+            box-shadow: 6px 6px #c90060;
+            background-color: #ffe6f1;
+        }
+
+        .datos-destacados {
+            padding: 13px 4px 5px;
+        }
+
+        .datos-destacados h3 {
+            font-size: clamp(24px, 3vw, 36px);
+            margin: 0 0 5px;
+            text-shadow: 2px 2px #c90060;
+        }
+
+        .datos-destacados p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+
+        .tag-musical {
+            display: inline-block;
+            background-color: #ffe6f1;
+            color: #e90065;
+            padding: 6px 9px;
+            font-size: 10px;
+            font-weight: bold;
+            margin: 3px 4px 0 0;
+            border-radius: 12px;
+        }
+
+        .boton-rosa {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #e90065;
+            color: white;
+            border: 2px solid #ffafd1;
+            padding: 9px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .boton-rosa:hover {
+            background-color: white;
+            color: #e90065;
+        }
+
+        .lado-derecho {
+            min-width: 0;
+        }
+
+        .franja-titulo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 0 0 10px;
+        }
+
+        .franja-titulo h3 {
+            color: #e90065;
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .franja-titulo span {
+            background-color: #e90065;
+            color: white;
+            padding: 6px 9px;
+            font-size: 10px;
+            font-weight: bold;
+            transform: rotate(2deg);
+        }
+
+        .rejilla-artistas {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .tarjeta-artista {
+            min-width: 0;
+            display: grid;
+            grid-template-columns: 96px minmax(0, 1fr);
+            background-color: #ffe6f1;
+            border: 2px solid #e90065;
+            padding: 8px;
+            gap: 10px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .tarjeta-artista:nth-child(2) {
+            border-radius: 22px 4px 4px 4px;
+            transform: rotate(1deg);
+        }
+
+        .tarjeta-artista:nth-child(3) {
+            border-radius: 4px 4px 22px 4px;
+            transform: rotate(-1deg);
+        }
+
+        .tarjeta-artista:nth-child(4) {
+            background-color: #ffb5d5;
+        }
+
+        .tarjeta-artista:hover {
+            transform: translateY(-4px) rotate(0deg);
+        }
+
+        .foto-tarjeta {
+            width: 96px;
+            height: 112px;
+            object-fit: cover;
+            border: 3px solid #ff4a98;
+            background-color: #ffc6df;
+        }
+
+        .info-tarjeta {
+            align-self: center;
+            min-width: 0;
+        }
+
+        .info-tarjeta small {
+            color: #e90065;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .info-tarjeta h4 {
+            color: #e90065;
+            font-size: 16px;
+            margin: 5px 0;
+            overflow-wrap: anywhere;
+        }
+
+        .info-tarjeta p {
+            font-size: 11px;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .info-tarjeta button {
+            margin-top: 8px;
+            background-color: #e90065;
+            color: white;
+            border: 1px solid #ff8fc0;
+            padding: 6px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .info-tarjeta button:hover {
+            background-color: white;
+            color: #e90065;
+        }
+
+        .cinta {
+            margin: 2px 15px 16px;
+            background-color: #ff4a98;
+            border-top: 5px solid #e90065;
+            border-bottom: 5px solid #e90065;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            overflow: hidden;
+        }
+
+        .cinta img {
+            width: 76px;
+            height: 76px;
+            object-fit: cover;
+            border: 3px solid white;
+            transform: rotate(-5deg);
+            flex-shrink: 0;
+        }
+
+        .cinta-texto {
+            color: white;
+            flex: 1;
+        }
+
+        .cinta-texto strong {
+            display: block;
+            font-size: 19px;
+            margin-bottom: 4px;
+        }
+
+        .cinta-texto span {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .cinta .boton-rosa {
+            background-color: #ffe6f1;
+            color: #e90065;
+            border-color: white;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .ficha-info {
+            display: none;
+            margin: 12px 15px 16px;
+            padding: 15px;
+            background-color: #fff0f7;
+            border: 3px dashed #e90065;
+            border-radius: 5px 22px 5px 22px;
+        }
+
+        .ficha-info.visible {
+            display: block;
+        }
+
+        .ficha-info h3 {
+            color: #e90065;
+            margin: 0 0 7px;
+            font-size: 21px;
+        }
+
+        .ficha-info p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #e90065;
+            color: white;
+            padding: 12px;
+            border-top: 6px solid #ff74b1;
+        }
+
+        footer p {
+            margin: 5px;
+            font-size: 12px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media(max-width: 900px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header>div {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .foto-destacada {
+                height: 260px;
+            }
+        }
+
+        @media(max-width: 600px) {
+            .intro-artistas {
+                grid-template-columns: 1fr;
+            }
+
+            .sello {
+                justify-self: end;
+            }
+
+            .rejilla-artistas {
+                grid-template-columns: 1fr;
+            }
+
+            .tarjeta-artista {
+                grid-template-columns: 90px minmax(0, 1fr);
+            }
+
+            .foto-tarjeta {
+                width: 90px;
+                height: 100px;
+            }
+
+            .cinta {
+                flex-wrap: wrap;
+            }
+
+            .cinta .boton-rosa {
+                margin-left: 90px;
+            }
+
+            .titulo h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div class="titulo">
+                <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+                <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+            </div>
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav">HOME!!</a>
+                <a href="pagina1.html" class="boton-nav">LETRAS</a>
+                <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+                <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+                <a href="pagina4.html" class="boton-nav activo">ARTISTAS 📽</a>
+                <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+            </nav>
+        </div>
+    </header>
+    <section class="intro-artistas">
+        <div>
+            <span class="etiqueta">XOXO MUSIC FILES / 004</span>
+            <h2>THE ONES<br>ON REPEAT ★</h2>
+            <p>Voces, estilos y personalidades que hacen que una canción se te quede pegada todo el día. Elige un
+                artista y descubre un poquito más de su mundo musical.</p>
+        </div>
+        <div class="sello">FAN<br>CLUB<br>♡ XOXO ♡</div>
+    </section>
+    <main>
+        <section class="artista-destacado">
+            <div class="encabezado-mini">✦ ARTISTA EN PRIMER PLANO ✦</div>
+            <img src="imag/taylor-swift.jpg" alt="Taylor Swift" class="foto-destacada" id="fotoDestacada">
+            <div class="datos-destacados">
+                <h3 id="nombreDestacado">TAYLOR SWIFT</h3>
+                <p id="descripcionDestacada">De las historias que parecen páginas de un diario a los himnos que cantas a
+                    todo pulmón: sus canciones suelen convertir sentimientos y recuerdos en música.</p>
+                <div id="generosDestacados"><span class="tag-musical">POP</span><span
+                        class="tag-musical">STORYTELLING</span><span class="tag-musical">SINGER-SONGWRITER</span></div>
+                <a href="pagina3.html" class="boton-rosa">IR A CANCIONES ♫</a>
+            </div>
+        </section>
+        <section class="lado-derecho">
+            <div class="franja-titulo">
+                <h3>ELIGE TU FAVORITO ♡</h3>
+                <span>ARTIST INDEX</span>
+            </div>
+            <div class="rejilla-artistas">
+                <article class="tarjeta-artista">
+                    <img src="imag/stray-kids.jpg" alt="Stray Kids" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>01 / K-POP</small>
+                        <h4>Stray Kids</h4>
+                        <p>Sonido intenso, energía y mucha personalidad.</p>
+                        <button onclick="mostrarArtista('stray')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="imag/david-guetta.jpg" alt="David Guetta" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>02 / ELECTRÓNICA</small>
+                        <h4>David Guetta</h4>
+                        <p>Ritmos de fiesta y sonidos electrónicos.</p>
+                        <button onclick="mostrarArtista('guetta')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="imag/katy-perry.jpg" alt="Katy Perry" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>03 / POP</small>
+                        <h4>Katy Perry</h4>
+                        <p>Pop colorido, pegajoso y lleno de actitud.</p>
+                        <button onclick="mostrarArtista('katy')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+                <article class="tarjeta-artista">
+                    <img src="imag/lmfao.png" alt="LMFAO" class="foto-tarjeta">
+                    <div class="info-tarjeta">
+                        <small>04 / PARTY</small>
+                        <h4>LMFAO</h4>
+                        <p>Un sonido divertido para poner la fiesta.</p>
+                        <button onclick="mostrarArtista('lmfao')">DESCUBRIR ↗</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <section class="cinta">
+        <img src="imag/sean.png" alt="Sean Paul">
+        <div class="cinta-texto">
+            <strong>ANOTHER VIBE? ✦ SEAN PAUL</strong>
+            <span>Dancehall, colaboraciones y canciones con ritmo para cambiar el mood.</span>
+        </div>
+        <button class="boton-rosa" onclick="mostrarArtista('sean')">PONLO EN EL RADAR ↗</button>
+    </section>
+    <section class="ficha-info" id="fichaInfo">
+        <h3 id="fichaTitulo">ARTISTA</h3>
+        <p id="fichaTexto">Selecciona un artista para conocer más.</p>
+    </section>
+    <footer>
+        <p>♡ XOXO ﾒ૦ﾒ૦ · ARTISTAS, SONIDOS Y ACTITUD ♡</p>
+        <p><a href="index.html">Volver al inicio</a> · <a href="pagina3.html">Ir a canciones ♫</a></p>
+    </footer>
+    <script>
+        const artistas = {
+            taylor: {nombre: "TAYLOR SWIFT", foto: "imag/taylor-swift.jpg", descripcion: "De las historias que parecen páginas de un diario a los himnos que cantas a todo pulmón: sus canciones suelen convertir sentimientos y recuerdos en música.", generos: ["POP", "STORYTELLING", "SINGER-SONGWRITER"], detalle: "Taylor Swift es conocida por escribir canciones que cuentan historias personales y por explorar distintos sonidos pop y country a lo largo de su carrera."},
+            stray: {nombre: "STRAY KIDS", foto: "imag/stray-kids.jpg", descripcion: "Un grupo de K-pop conocido por sus actuaciones intensas, bases potentes y una identidad musical muy marcada.", generos: ["K-POP", "HIP-HOP", "PERFORMANCE"], detalle: "Stray Kids participa en la creación de buena parte de su música y combina sonidos electrónicos, hip-hop y pop con actuaciones llenas de energía."},
+            guetta: {nombre: "DAVID GUETTA", foto: "imag/david-guetta.jpg", descripcion: "Beats electrónicos, colaboraciones pop y canciones hechas para subir el volumen y moverse.", generos: ["EDM", "DANCE", "POP"], detalle: "David Guetta es un DJ y productor francés asociado con la música electrónica bailable y numerosas colaboraciones con artistas pop."},
+            katy: {nombre: "KATY PERRY", foto: "imag/katy-perry.jpg", descripcion: "Una estética colorida, coros que se quedan en la cabeza y una etapa pop llena de personalidad.", generos: ["POP", "DANCE-POP", "COLORFUL"], detalle: "Katy Perry es una cantante pop conocida por sus sencillos pegajosos, sus videos llamativos y sus presentaciones teatrales."},
+            lmfao: {nombre: "LMFAO", foto: "imag/lmfao.png", descripcion: "Una mezcla de electro-pop, humor y energía de fiesta que se volvió muy reconocible en los 2010.", generos: ["ELECTRO-POP", "PARTY", "Y2K-INSPIRED"], detalle: "LMFAO es un dúo musical estadounidense conocido por combinar música electrónica y pop con una imagen divertida y festiva."},
+            sean: {nombre: "SEAN PAUL", foto: "imag/sean.png", descripcion: "Ritmos dancehall y colaboraciones que mezclan sonidos caribeños con pop y música bailable.", generos: ["DANCEHALL", "REGGAE FUSION", "POP"], detalle: "Sean Paul es un artista jamaicano de dancehall que ha colaborado con artistas de distintos estilos y ayudado a llevar ese sonido a públicos internacionales."}
+        };
+        function mostrarArtista(clave) {
+            const artista = artistas[clave];
+            document.getElementById("fotoDestacada").src = artista.foto;
+            document.getElementById("fotoDestacada").alt = artista.nombre;
+            document.getElementById("nombreDestacado").textContent = artista.nombre;
+            document.getElementById("descripcionDestacada").textContent = artista.descripcion;
+            document.getElementById("generosDestacados").innerHTML = artista.generos.map(genero => '<span class="tag-musical">' + genero + '</span>').join('');
+            document.getElementById("fichaTitulo").textContent = "✦ " + artista.nombre;
+            document.getElementById("fichaTexto").textContent = artista.detalle;
+            document.getElementById("fichaInfo").classList.add("visible");
+            document.getElementById("fichaInfo").scrollIntoView({behavior: "smooth", block: "nearest"});
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOXO.ᐟ | LETRAS</title>
+    <link rel="icon" type="image/png" href="image/logopagina.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8cce1;
+            color: #78204c;
+        }
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #ff4a98;
+            padding: 12px;
+            border-top: 8px solid #e90065;
+            border-bottom: 5px solid #d90065;
+            gap: 20px;
+        }
+        header>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+        }
+        .titulo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .titulo h1 {
+            color: white;
+            font-size: 30px;
+            margin: 0;
+            text-shadow: 2px 2px #c90060;
+        }
+        .logo-cabecera {
+            width: 125px;
+            height: 75px;
+            object-fit: contain;
+        }
+        .barra-navegacion {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 0;
+            flex-wrap: wrap;
+        }
+        .boton-nav {
+            text-decoration: none;
+            color: white;
+            background-color: #e90065;
+            padding: 8px 12px;
+            font-size: 13px;
+            border: 1px solid #ffb5d5;
+            border-radius: 5px;
+        }
+        .boton-nav:hover,
+        .boton-nav.activo {
+            background-color: white;
+            color: #e90065;
+        }
+        .presentacion {
+            margin: 18px 15px 12px;
+            padding: 20px;
+            background-color: #e90065;
+            color: white;
+            border: 3px solid #ff8fc0;
+            border-radius: 5px 28px 5px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            overflow: hidden;
+        }
+        .presentacion h2 {
+            font-size: clamp(28px, 4vw, 48px);
+            margin: 0 0 8px;
+            text-shadow: 3px 3px #c90060;
+        }
+        .presentacion p {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        .sticker {
+            background-color: #ffb5d5;
+            color: #e90065;
+            border: 2px solid #e90065;
+            padding: 14px 18px;
+            font-weight: bold;
+            transform: rotate(7deg);
+            text-align: center;
+            min-width: 110px;
+        }
+.imagen-esquina {
+    width: 100%;
+    height: 165px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid #ad0c51;
+    border-radius: 67% 23px 20% 35px;
+    background-color: #e90065;
+    opacity: 0.88;
+    margin-top: 10px;
+}
+        main {
+            padding: 0 15px 18px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 13px;
+            align-items: stretch;
+        }
+        .columna {
+            min-width: 0;
+            background-color: #ffe6f1;
+            border: 2px dotted #e90065;
+            padding: 12px;
+        }
+        .columna:nth-child(1) {
+            border-radius: 24px 5px 5px 5px;
+        }
+        .columna:nth-child(2) {
+            background-color: #ff1682;
+            border: 3px solid #e90065;
+            border-radius: 5px 25px 5px 25px;
+        }
+        .columna:nth-child(3) {
+            border-radius: 5px 5px 24px 5px;
+        }
+        h3 {
+            color: #e90065;
+            font-size: 17px;
+            margin: 3px 0 12px;
+        }
+        .columna:nth-child(2) h3 {
+            color: white;
+        }
+        .columna:nth-child(2) .subtitulo {
+            color: white;
+        }
+        .opcion-cancion {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px;
+            background-color: #fff0f7;
+            border: 1px solid #ffafd1;
+            margin-bottom: 8px;
+        }
+        .mini-portada {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: #ffb5d5;
+            border: 2px solid #e90065;
+        }
+        .datos-cancion {
+            flex: 1;
+            min-width: 0;
+        }
+        .datos-cancion strong {
+            display: block;
+            color: #e90065;
+            font-size: 12px;
+        }
+        .datos-cancion span {
+            display: block;
+            font-size: 10px;
+            margin-top: 4px;
+        }
+        .boton-ver {
+            background-color: #e90065;
+            color: white;
+            border: 1px solid #ff8fc0;
+            padding: 7px 8px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .boton-ver:hover {
+            background-color: #ff4a98;
+        }
+        .portada-grande {
+            width: 100%;
+            max-width: 190px;
+            height: 155px;
+            display: block;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            border: 5px solid #ffafd1;
+            box-shadow: 5px 5px #c90060;
+            background-color: #ffe6f1;
+        }
+        .cancion-actual {
+            text-align: center;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .cancion-actual h4 {
+            font-size: 20px;
+            margin: 6px 0;
+        }
+        .cancion-actual p {
+            margin: 0;
+            font-size: 12px;
+        }
+        .letra-texto {
+            background-color: #fff0f7;
+            color: #78204c;
+            padding: 12px;
+            border: 2px solid #ffafd1;
+            min-height: 190px;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+        .aviso {
+            font-size: 10px;
+            color: white;
+            text-align: center;
+            margin: 10px 0 0;
+        }
+        .caja-traduccion {
+            background-color: #fff0f7;
+            border: 2px solid #ffafd1;
+            padding: 12px;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre-line;
+            min-height: 190px;
+        }
+        .significado {
+            margin-top: 12px;
+            background-color: #ffc6df;
+            border-left: 5px solid #e90065;
+            padding: 10px;
+        }
+        .significado strong {
+            color: #e90065;
+            font-size: 12px;
+        }
+        .significado p {
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 6px 0 0;
+        }
+        .nota-final {
+            margin: 0 15px 15px;
+            background-color: #ff4a98;
+            color: wh;
+            padding: 12px;
+            text-align: center;
+            border-bottom: 5px solid #e90065;
+            font-size: 12px;
+        }
+        footer {
+            text-align: center;
+            background-color: #e90065;
+            color: white;
+            padding: 12px;
+            margin-top: 5px;
+            border-top: 6px solid #ff74b1;
+        }
+        footer p {
+            margin: 5px;
+            font-size: 12px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        @media(max-width: 850px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            header>div {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            main {
+                grid-template-columns: 1fr;
+            }
+            .presentacion {
+                align-items: flex-start;
+            }
+            .columna {
+                width: 100%;
+            }
+            .portada-grande {
+                height: 190px;
+            }
+        }
+        @media(max-width: 480px) {
+            .presentacion {
+                flex-direction: column;
+            }
+            .sticker {
+                align-self: flex-end;
+            }
+            .titulo h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <div class="titulo">
+                <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+                <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+            </div>
+            <nav class="barra-navegacion">
+                <a href="index.html" class="boton-nav">HOME!!</a>
+                <a href="pagina1.html" class="boton-nav activo">LETRAS</a>
+                <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+                <a href="pagina3.html" class="boton-nav">CANCIONES ♫</a>
+                <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+                <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+            </nav>
+        </div>
+    </header>
+    <div class="presentacion">
+        <div>
+            <h2>LETRAS EN LOOP ♫</h2>
+            <p>Lee, traduce y descubre lo que hay detrás de cada cancion.</p>
+        </div>
+        <div class="sticker">SING IT!<br> XOXO </div>
+    </div>
+    <main>
+        <section class="columna">
+            <h3>╰┈➤ ELIGE LA CANCIÓN DE TU AGRADO</h3>
+            <div class="opcion-cancion">
+                <img src="image/bara.png" alt="Portada de Neon Hearts" class="mini-portada">
+                <div class="datos-cancion"><strong>Neon Hearts</strong><span>XOXO Originals · Pop</span></div>
+                <button class="boton-ver" onclick="mostrarCancion(0)">VER ♡</button>
+            </div>
+            <div class="opcion-cancion">
+                <img src="image/tbe.png" alt="Portada de Midnight Replay" class="mini-portada">
+                <div class="datos-cancion"><strong>Midnight Replay</strong><span>XOXO Originals · Y2K</span></div>
+                <button class="boton-ver" onclick="mostrarCancion(1)">VER ♡</button>
+            </div>
+            <div class="opcion-cancion">
+                <img src="image/sean.png" alt="Portada de Pink Skies" class="mini-portada">
+                <div class="datos-cancion"><strong>Pink Skies</strong><span>XOXO Originals · Chill pop</span></div>
+                <button class="boton-ver" onclick="mostrarCancion(2)">VER ♡</button>
+            </div>
+            <div class="opcion-cancion">
+                <img src="image/" alt="Portada de Otra dimensión" class="mini-portada">
+                <div class="datos-cancion"><strong>Otra dimensión</strong><span>XOXO Originals · Dream pop</span></div>
+                <button class="boton-ver" onclick="mostrarCancion(3)">VER ♡</button>
+            </div>
+            <div class="opcion-cancion">
+                <img src="imag/otra-dimension.jpg" alt="Portada de Otra dimensión" class="mini-portada">
+                <div class="datos-cancion"><strong>Otra dimensión</strong><span>XOXO Originals · Dream pop</span></div>
+                <button class="boton-ver" onclick="mostrarCancion(3)">VER ♡</button>
+            </div>
+            <div class="opcion-cancion">
+                <img src="image/" alt="Portada de Otra dimensión" class="mini-portada">
+                <div class="datos-cancion"><strong>Otra dimensión</strong><span>XOXO Originals · Dream pop</span></div>
+                <button class="boton-ver" onclick="mostrarCancion(3)">VER ♡</button>
+            </div>
+            <p style="font-size:11px; line-height:1.5;">Escoge una canción para lograr ver su letra, y su significado</p>
+        </section>
+        <section class="columna">
+            <img src="imag/neon-hearts.jpg" alt="Portada de la canción seleccionada" class="portada-grande"
+                id="portadaActual">
+            <div class="cancion-actual">
+                <h4 id="tituloActual">Neon Hearts</h4>
+                <p id="artistaActual">XOXO Originals · Pop</p>
+            </div>
+            <h3>Letra ♫</h3>
+            <div class="letra-texto" id="letraTexto">Luces prendidas, comienza la noche
+                brilla la calle, nadie nos conoce
+                sube el volumen, déjate llevar
+                hoy las estrellas nos van a encontrar.</div>
+        </section>
+        <section class="columna">
+            <h3>Traducción ↓</h3>
+            <div class="caja-traduccion" id="traduccionTexto">Las luces están encendidas y empieza la noche.
+                La calle brilla y nadie nos conoce.
+                Sube el volumen y disfruta el momento.
+                Esta noche, las estrellas nos encontrarán.</div>
+            <div class="significado">
+                <strong>¿Y QUÉ SIGNIFICA? ˚.ᵎᵎ</strong>
+                <p id="significadoTexto">Habla de salir, olvidarse un rato de las preocupaciones y disfrutar la noche
+                    con libertad.</p>
+            </div>
+            <div class="sticker" style="margin-top:14px; transform:rotate(-3deg);">FEEL THE<br>FEELING .✦˖</div>
+            <img src="image/gif5.gif" alt="Imagen musical decorativa" class="imagen-esquina">
+        </section>
+    </main>
+    <footer>
+        <p> XOXO · MUSICA, LYRICS Y SENTIMIENTOS</p>
+        <p><a href="index.html">Volver al inicio</a></p>
+    </footer>
+    <script>
+        const canciones = [
+            {titulo: "Neon Hearts", artista: "XOXO Originals · Pop", portada: "imag/neon-hearts.jpg", letra: "Luces prendidas, comienza la noche\nbrilla la calle, nadie nos conoce\nsube el volumen, déjate llevar\nhoy las estrellas nos van a encontrar.", traduccion: "Las luces están encendidas y empieza la noche.\nLa calle brilla y nadie nos conoce.\nSube el volumen y disfruta el momento.\nEsta noche, las estrellas nos encontrarán.", significado: "Habla de salir, olvidarse un rato de las preocupaciones y disfrutar la noche con libertad."},
+            {titulo: "Midnight Replay", artista: "XOXO Originals · Y2K vibes", portada: "imag/midnight-replay.jpg", letra: "Suena tu voz en mi habitación\ncomo un cassette dentro del corazón\nrebobino el tiempo una vez más\nhay recuerdos que no quiero borrar.", traduccion: "Tu voz suena en mi habitación, como una cinta guardada en el corazón.\nVuelvo al pasado una vez más.\nHay recuerdos que quiero conservar.", significado: "Es sobre recordar a alguien y volver mentalmente a momentos que fueron importantes."},
+            {titulo: "Pink Skies", artista: "XOXO Originals · Chill pop", portada: "imag/pink-skies.jpg", letra: "Cielo rosado, tarde sin final\ncon tus mensajes todo suena especial\nno hay prisa, podemos caminar\nque el mundo espere, quiero conversar.", traduccion: "El cielo está rosado y la tarde parece no terminar.\nTus mensajes hacen que todo se sienta especial.\nNo tenemos prisa, podemos caminar.\nQue el mundo espere, quiero hablar contigo.", significado: "Describe esa tranquilidad de estar con alguien con quien puedes ser tú misma y disfrutar las cosas sencillas."},
+            {titulo: "Otra dimensión", artista: "XOXO Originals · Dream pop", portada: "imag/otra-dimension.jpg", letra: "Pongo los audífonos, desaparece el ruido\nmi propio universo se siente encendido\ncolores que nadie más puede mirar\nuna dimensión donde puedo soñar.", traduccion: "Me pongo los audífonos y el ruido desaparece.\nMi universo se siente lleno de vida.\nVeo colores que los demás no pueden ver.\nEs un lugar donde puedo soñar.", significado: "Habla de refugiarse en la música y crear un espacio propio cuando el mundo se siente demasiado ruidoso."}
+        ];
+        function mostrarCancion(numero) {
+            const cancion = canciones[numero];
+            document.getElementById("tituloActual").textContent = cancion.titulo;
+            document.getElementById("artistaActual").textContent = cancion.artista;
+            document.getElementById("portadaActual").src = cancion.portada;
+            document.getElementById("portadaActual").alt = "Portada de " + cancion.titulo;
+            document.getElementById("letraTexto").textContent = cancion.letra;
+            document.getElementById("traduccionTexto").textContent = cancion.traduccion;
+            document.getElementById("significadoTexto").textContent = cancion.significado;
+        }
+    </script>
+</body>
+</html>

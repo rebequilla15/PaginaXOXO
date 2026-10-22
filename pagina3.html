@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XOXO.ᐟ | CANCIONES</title>
+        <link rel="icon" type="image/png" href="image/logopagina.png">
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8cce1;
+    color: #78204c;
+    overflow-x: hidden;
+}
+/* CABECERA */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ff4a98;
+    padding: 12px;
+    border-top: 8px solid #e90065;
+    border-bottom: 5px solid #d90065;
+    gap: 20px;
+}
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.titulo h1 {
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    text-shadow: 2px 2px #c90060;
+}
+.logo-cabecera {
+    width: 125px;
+    height: 75px;
+    object-fit: contain;
+}
+header > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    width: 100%;
+}
+/* MENU */
+.barra-navegacion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+.boton-nav {
+    text-decoration: none;
+    color: white;
+    background-color: #e90065;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #ffb5d5;
+    border-radius: 5px;
+}
+.boton-nav:hover, .boton-nav.activo {
+    background-color: white;
+    color: #e90065;
+}
+/* TITULO PRINCIPAL */
+main {
+    padding: 18px;
+}
+.portada-titulo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #ff1682;
+    border: 4px solid #e90065;
+    border-radius: 28px 70px 28px 70px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.portada-titulo h2 {
+    color: white;
+    font-size: 35px;
+    margin: 0;
+    text-shadow: 3px 3px #c90060;
+}
+.portada-titulo p {
+    color: white;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 470px;
+}
+.sello {
+    background-color: #f8cce1;
+    color: #e90065;
+    border: 3px solid #ffb5d5;
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    transform: rotate(10deg);
+}
+/* BARRA DE GENEROS */
+.generos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+}
+.generos span {
+    color: #e90065;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.generos a {
+    color: white;
+    text-decoration: none;
+    background-color: #e90065;
+    border: 2px solid #ff8fc0;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 13px;
+    transform: rotate(-2deg);
+}
+.generos a:nth-child(even) {
+    transform: rotate(2deg);
+    background-color: #ff4a98;
+}
+.generos a:hover {
+    background-color: #78204c;
+}
+/* DISTRIBUCION */
+.distribucion {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(250px, 0.8fr);
+    gap: 20px;
+    align-items: stretch;
+}
+.lista-principal {
+    min-width: 0;
+    background-color: #e90082;
+    padding: 20px;
+    border-radius: 38px 12px 38px 12px;
+    border: 3px solid #d90065;
+}
+.titulo-lista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.titulo-lista h2 {
+    color: white;
+    font-size: 22px;
+    margin: 0;
+}
+.titulo-lista span {
+    color: #ffa6d2;
+    font-size: 25px;
+}
+/* CANCIONES GRANDES */
+.cancion-grande {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    background-color: #fff0f7;
+    border: 3px solid #ffb1d3;
+    border-radius: 15px 35px 15px 35px;
+    padding: 12px;
+    margin-bottom: 14px;
+    min-height: 145px;
+    position: relative;
+}
+.cancion-grande:nth-of-type(even) {
+    border-radius: 35px 15px 35px 15px;
+    background-color: #ffe0ef;
+}
+.portada-cancion {
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 4px solid #e90065;
+    border-radius: 12px;
+    background-color: #ffa6d2;
+}
+.info-cancion {
+    flex: 1;
+    min-width: 0;
+}
+.info-cancion h3 {
+    color: #e90065;
+    font-size: 22px;
+    margin: 0 0 7px;
+}
+.info-cancion p {
+    color: #78204c;
+    font-size: 14px;
+    margin: 5px 0;
+}
+.etiqueta-genero {
+    display: inline-block;
+    background-color: #ff4a98;
+    color: white;
+    padding: 5px 9px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+.abrir-letra {
+    display: inline-block;
+    margin-top: 10px;
+    color: white;
+    background-color: #e90065;
+    border: 2px solid #ff8fc0;
+    border-radius: 5px;
+    padding: 9px 13px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+.abrir-letra:hover {
+    background-color: #ff4a98;
+}
+.numero-cancion {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #e90065;
+    font-size: 13px;
+    font-weight: bold;
+}
+/* COLUMNA DECORATIVA */
+.lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+}
+.imagen-esquina {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    border: 5px solid #e90065;
+    border-radius: 45px 10px 45px 10px;
+    background-color: #ffa6d2;
+}
+.reproductor {
+    background-color: #ff4a98;
+    border: 4px solid #e90065;
+    border-radius: 12px 40px 12px 40px;
+    padding: 16px;
+    color: white;
+}
+.reproductor h2 {
+    font-size: 20px;
+    margin: 0 0 12px;
+}
+.reproductor img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border: 4px solid #ffb5d5;
+    border-radius: 12px;
+    background-color: #ffa6d2;
+}
+.reproductor h3 {
+    font-size: 19px;
+    margin: 10px 0 4px;
+}
+.reproductor p {
+    font-size: 13px;
+    margin: 4px 0 10px;
+}
+.reproductor audio {
+    width: 100%;
+}
+.frase {
+    background-color: #ffe6f1;
+    border-left: 7px solid #e90065;
+    padding: 15px;
+    color: #78204c;
+    font-size: 14px;
+    line-height: 1.6;
+    border-radius: 4px 18px 4px 18px;
+}
+.frase strong {
+    color: #e90065;
+}
+/* PIE */
+footer {
+    text-align: center;
+    background-color: #e90065;
+    color: white;
+    padding: 12px;
+    margin-top: 5px;
+    border-top: 6px solid #ff74b1;
+}
+footer p {
+    margin: 5px;
+    font-size: 13px;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+/* ADAPTACION */
+@media (max-width: 850px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header > div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .titulo h1 {
+        font-size: 24px;
+    }
+    .distribucion {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 550px) {
+    .portada-titulo h2 {
+        font-size: 25px;
+    }
+    .sello {
+        width: 85px;
+        height: 85px;
+        font-size: 11px;
+    }
+    .cancion-grande {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .portada-cancion {
+        width: 100%;
+        height: 210px;
+    }
+    .numero-cancion {
+        color: white;
+        background-color: #e90065;
+        padding: 5px 8px;
+        border-radius: 5px;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <div>
+        <div class="titulo">
+            <h1>ﾒ૦ﾒ૦ 💋.ᐟ</h1>
+            <img src="image/2000.png" alt="Logo de XOXO" class="logo-cabecera">
+        </div>
+        <nav class="barra-navegacion">
+            <a href="index.html" class="boton-nav">HOME!!</a>
+            <a href="pagina1.html" class="boton-nav">LETRAS</a>
+            <a href="pagina2.html" class="boton-nav">PARA TI.ᐟ</a>
+            <a href="pagina3.html" class="boton-nav activo">CANCIONES ♫</a>
+            <a href="pagina4.html" class="boton-nav">ARTISTAS 📽</a>
+            <a href="pagina5.html" class="boton-nav">PLAYLIST</a>
+        </nav>
+    </div>
+</header>
+<main>
+    <section class="portada-titulo">
+        <div>
+            <h2>DALE PLAY A TU MOOD ♫</h2>
+            <p>Un rincón para descubrir canciones, repetir tus favoritas y ponerle soundtrack a tu día.</p>
+        </div>
+        <div class="sello">XOXO<br>RADIO<br>♡ 2000s ♡</div>
+    </section>
+    <nav class="generos">
+        <span>BUSCA TU VIBE →</span>
+        <a href="#pop">POP ♡</a>
+        <a href="#kpop">K-POP ✦</a>
+        <a href="#electronica">ELECTRÓNICA ♫</a>
+        <a href="#chill">CHILL ☁</a>
+    </nav>
+    <div class="distribucion">
+        <section class="lista-principal">
+            <div class="titulo-lista">
+                <h2>♡ TRACKS PARA TU PLAYLIST</h2>
+                <span>♫ ✧ ♡</span>
+            </div>
+            <article class="cancion-grande" id="pop">
+                <img src="imag/katy-perry.jpg" alt="Portada de Katy Perry" class="portada-cancion">
+                <div class="info-cancion">
+                    <h3>Teenage Dream</h3>
+                    <p>Katy Perry</p>
+                    <span class="etiqueta-genero">POP / THROWBACK</span>
+                    <br>
+                    <a href="pagina1.html" class="abrir-letra">LETRA + TRADUCCIÓN ↗</a>
+                </div>
+                <span class="numero-cancion">01</span>
+            </article>
+            <article class="cancion-grande" id="kpop">
+                <img src="imag/stray-kids.jpg" alt="Portada de Stray Kids" class="portada-cancion">
+                <div class="info-cancion">
+                    <h3>MANIAC</h3>
+                    <p>Stray Kids</p>
+                    <span class="etiqueta-genero">K-POP</span>
+                    <br>
+                    <a href="pagina1.html" class="abrir-letra">LETRA + TRADUCCIÓN ↗</a>
+                </div>
+                <span class="numero-cancion">02</span>
+            </article>
+            <article class="cancion-grande" id="electronica">
+                <img src="imag/david-guetta.jpg" alt="Portada de David Guetta" class="portada-cancion">
+                <div class="info-cancion">
+                    <h3>Titanium</h3>
+                    <p>David Guetta ft. Sia</p>
+                    <span class="etiqueta-genero">ELECTRÓNICA</span>
+                    <br>
+                    <a href="pagina1.html" class="abrir-letra">LETRA + TRADUCCIÓN ↗</a>
+                </div>
+                <span class="numero-cancion">03</span>
+            </article>
+            <article class="cancion-grande" id="chill">
+                <img src="imag/2000.png" alt="Imagen de XOXO" class="portada-cancion">
+                <div class="info-cancion">
+                    <h3>Midnight Replay</h3>
+                    <p>XOXO Originals</p>
+                    <span class="etiqueta-genero">CHILL POP</span>
+                    <br>
+                    <a href="pagina1.html" class="abrir-letra">LETRA + TRADUCCIÓN ↗</a>
+                </div>
+                <span class="numero-cancion">04</span>
+            </article>
+        </section>
+        <aside class="lateral">
+            <img src="imag/Dj power.jpg" alt="Imagen musical decorativa" class="imagen-esquina">
+            <section class="reproductor">
+                <h2>✦ EN REPEAT ✦</h2>
+                <img src="imag/katy-perry.jpg" alt="Portada de la canción destacada">
+                <h3>TEENAGE DREAM</h3>
+                <p>Katy Perry · Pop</p>
+                <audio controls>
+                    <source src="audio/cancion.mp3" type="audio/mpeg">
+                    Tu navegador no puede reproducir este audio.
+                </audio>
+            </section>
+            <div class="frase">
+                <strong>♡ XOXO NOTE</strong>
+                <p>Hay canciones que te regresan a un momento, a una persona o a una versión de ti. Guarda las que te hagan sentir algo.</p>
+            </div>
+            <img src="imag/lmfao.png" alt="Imagen musical decorativa" class="imagen-esquina">
+        </aside>
+    </div>
+</main>
+<footer>
+    <p>♡ XOXO 💋 | Tu música, tu mood ♡</p>
+    <p><a href="index.html">Volver al inicio</a></p>
+</footer>
+</body>
+</html>
